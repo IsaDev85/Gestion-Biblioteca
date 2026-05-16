@@ -58,7 +58,7 @@ Permite registrar usuarios, registrar libros, prestar libros y manejar una cola 
 ---
 
 ## ⚙️ Tecnologías usadas
-- Python 3.x  
+- Python 3.14.3  
 - Tkinter (interfaz gráfica)  
 - `ttk.Notebook` para pestañas  
 - `deque` de `collections` para manejar la cola de espera  
