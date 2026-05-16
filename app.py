@@ -94,6 +94,11 @@ def devolver_libro():
                     seleccion,
                     f"{users[siguiente_usuario]['nombre']} → {books[libro_id]['titulo']}",
                 )
+
+                for i in range(lista_espera.size()):
+                    if users[siguiente_usuario]["nombre"] in lista_espera.get(i):
+                        lista_espera.delete(i)
+                        break
             else:
                 books[libro_id]["prestado"] = False
                 books[libro_id]["usuario"] = None
@@ -108,6 +113,7 @@ def actualizar_combobox():
     ]
 
 
+# desde esta linea es la interfaz gráfica
 notebook = ttk.Notebook(root)
 tab1 = ttk.Frame(notebook)
 tab2 = ttk.Frame(notebook)
