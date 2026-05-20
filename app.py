@@ -136,8 +136,27 @@ entrada_apellido.pack(pady=5)
 boton_usuario = tk.Button(tab1, text="Guardar Usuario", command=guardar_usuario)
 boton_usuario.pack(pady=10)
 
-lista_usuarios = tk.Listbox(tab1, width=50, height=10)
-lista_usuarios.pack(pady=10)
+frame_usuarios = tk.Frame(tab1)
+frame_usuarios.pack(pady=10)
+
+scroll_usuarios_v = tk.Scrollbar(frame_usuarios, orient=tk.VERTICAL)
+scroll_usuarios_h = tk.Scrollbar(frame_usuarios, orient=tk.HORIZONTAL)
+
+lista_usuarios = tk.Listbox(
+    frame_usuarios, width=50, height=10,
+    yscrollcommand=scroll_usuarios_v.set,
+    xscrollcommand=scroll_usuarios_h.set
+)
+lista_usuarios.grid(row=0, column=0, sticky="nsew")
+
+scroll_usuarios_v.grid(row=0, column=1, sticky="ns")
+scroll_usuarios_h.grid(row=1, column=0, sticky="ew")
+
+scroll_usuarios_v.config(command=lista_usuarios.yview)
+scroll_usuarios_h.config(command=lista_usuarios.xview)
+
+frame_usuarios.grid_rowconfigure(0, weight=1)
+frame_usuarios.grid_columnconfigure(0, weight=1)
 
 tk.Label(tab2, text="Título:").pack()
 entrada_titulo = tk.Entry(tab2, width=30)
@@ -154,8 +173,27 @@ entrada_genero.pack(pady=5)
 boton_libro = tk.Button(tab2, text="Guardar Libro", command=guardar_libro)
 boton_libro.pack(pady=10)
 
-lista_libros = tk.Listbox(tab2, width=50, height=10)
-lista_libros.pack(pady=10)
+frame_libros = tk.Frame(tab2)
+frame_libros.pack(pady=10)
+
+scroll_libros_v = tk.Scrollbar(frame_libros, orient=tk.VERTICAL)
+scroll_libros_h = tk.Scrollbar(frame_libros, orient=tk.HORIZONTAL)
+
+lista_libros = tk.Listbox(
+    frame_libros, width=50, height=10,
+    yscrollcommand=scroll_libros_v.set,
+    xscrollcommand=scroll_libros_h.set
+)
+lista_libros.grid(row=0, column=0, sticky="nsew")
+
+scroll_libros_v.grid(row=0, column=1, sticky="ns")
+scroll_libros_h.grid(row=1, column=0, sticky="ew")
+
+scroll_libros_v.config(command=lista_libros.yview)
+scroll_libros_h.config(command=lista_libros.xview)
+
+frame_libros.grid_rowconfigure(0, weight=1)
+frame_libros.grid_columnconfigure(0, weight=1)
 
 tk.Label(tab3, text="Seleccionar Usuario:").pack()
 combo_usuarios = ttk.Combobox(tab3, width=40, state="readonly")
