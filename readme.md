@@ -1,11 +1,11 @@
-# 📚 Biblioteca de Barbosa
+# Biblioteca de Barbosa
 
 Aplicación en **Python + Tkinter** para la gestión de usuarios y libros en una biblioteca.  
 Permite registrar usuarios, registrar libros, prestar libros y manejar una cola de espera cuando un libro ya está prestado.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 ### 1. Registro de Usuarios
 - Se ingresan **nombre** y **apellido**.
@@ -32,7 +32,7 @@ Permite registrar usuarios, registrar libros, prestar libros y manejar una cola 
 
 ---
 
-## 🧩 Flujo de Uso
+## Flujo de Uso
 
 1. **Registrar usuarios** en la pestaña 1.  
 2. **Registrar libros** en la pestaña 2.  
@@ -44,7 +44,7 @@ Permite registrar usuarios, registrar libros, prestar libros y manejar una cola 
 
 ---
 
-## 📌 Ejemplo de interacción
+## Ejemplo de interacción
 
 - Registrar **Usuario A** y **Usuario B**.  
 - Registrar el libro **“Cien años de soledad”**.  
@@ -57,15 +57,10 @@ Permite registrar usuarios, registrar libros, prestar libros y manejar una cola 
 
 ---
 
-## ⚙️ Tecnologías usadas
+## Tecnologías usadas
 - Python 3.14.3  
 - Tkinter (interfaz gráfica)  
 - `ttk.Notebook` para pestañas  
 - `deque` de `collections` para manejar la cola de espera  
 
 ---
-
-## 📖 Próximas mejoras
-- Mostrar detalles completos del libro (título, autor, género, estado, usuario actual) en la pestaña de préstamos.  
-- Exportar registros a archivo CSV o base de datos.  
-- Implementar búsqueda y filtrado de usuarios/libros.
