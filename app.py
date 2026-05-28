@@ -84,6 +84,13 @@ def actualizar_combobox():
         for bid, b in books.items()
     ]
 
+def actualizar_lista_libros():
+    lista_libros.delete(0, tk.END)
+    for bid, b in books.items():
+        estado = "● Ocupado" if b["prestado"] else "● Libre"
+        lista_libros.insert(tk.END,
+            f"  ID {bid:03d}   {b['titulo']} — {b['autor']}  [{b['genero']}]  {estado}")
+
 def guardar_usuario():
     global contador_id_user
     nombre = entrada_nombre.get().strip()
@@ -108,7 +115,7 @@ def guardar_libro():
         books[contador_id_book] = {"titulo": titulo, "autor": autor, "genero": genero,
                                     "prestado": False, "usuario": None}
         cola_espera[contador_id_book] = deque()
-        lista_libros.insert(tk.END, f"  ID {contador_id_book:03d}   {titulo} — {autor}  [{genero}]  ● Libre")
+        actualizar_lista_libros()
         actualizar_combobox()
         entrada_titulo.delete(0, tk.END)
         entrada_autor.delete(0, tk.END)
@@ -128,9 +135,12 @@ def prestar_libro():
             books[libro_id]["prestado"] = True
             books[libro_id]["usuario"]  = usuario_id
             actualizar_combobox()
+            actualizar_lista_libros()
             lista_prestados.insert(tk.END,
                 f"  {users[usuario_id]['nombre']} {users[usuario_id]['apellido']}  →  {books[libro_id]['titulo']}")
             set_status(f"✔  Préstamo registrado correctamente.")
+            combo_libros.set("")
+            combo_usuarios.set("")
         else:
             cola_espera[libro_id].append(usuario_id)
             lista_espera.insert(tk.END,
@@ -160,6 +170,7 @@ def devolver_libro():
                 books[libro_id]["prestado"] = False
                 books[libro_id]["usuario"]  = None
                 lista_prestados.delete(sel)
+                actualizar_lista_libros()
                 set_status(f"✔  Libro devuelto correctamente.")
             actualizar_combobox()
     else:
